@@ -23,9 +23,32 @@ Quando('eu submeto meu cadastro sem o nome') do
   find("#password").set "pwd123"
 
   click_button "Cadastrar"
-end                                                                           
-                                                                              
+end
+
 Então('é exibida a mensagem: Oops. Informe seu nome completo!') do            
-  alert_msg = find(".alert-dark")
-  expect(alert_msg.text).to eq 'Oops. Informe seu nome completo!'
-end                                                                           
+  alert_missing_name = find(".alert-dark")
+  expect(alert_missing_name.text).to eq 'Oops. Informe seu nome completo!'
+end
+
+Quando('eu submeto meu cadastro sem o email') do                               
+  find("#fullName").set "Paulo"
+  find("#password").set "pwd123"
+
+  click_button "Cadastrar"
+  
+end
+
+Quando('eu submeto meu cadastro com email incorreto') do                     
+  find("#fullName").set "Paulo"
+  find("#email").set "ola"
+  find("#password").set "pwd123"
+
+  click_button "Cadastrar"
+
+end                                                                          
+
+Então('é exibida a mensagem: Oops. Informe um email válido!') do               
+  alert_missing_email = find(".alert-dark")
+  expect(alert_missing_email.text).to eq 'Oops. Informe um email válido!'
+end                                                                            
+                                                                               

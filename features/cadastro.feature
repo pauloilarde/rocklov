@@ -18,12 +18,14 @@ Funcionalidade: Cadastro
         Quando eu submeto meu cadastro sem o nome 
         Então é exibida a mensagem: Oops. Informe seu nome completo! 
 
+    @sem_email
     Cenario: submeter cadastro sem o email
 
         Dado que eu acesso a página de cadastro
         Quando eu submeto meu cadastro sem o email
         Então é exibida a mensagem: Oops. Informe um email válido!
 
+    @email_inv
     Cenario: submeter cadastro com email incorreto
 
         Dado que eu acesso a página de cadastro
