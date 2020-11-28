@@ -50,5 +50,17 @@ end
 Então('é exibida a mensagem: Oops. Informe um email válido!') do               
   alert_missing_email = find(".alert-dark")
   expect(alert_missing_email.text).to eq 'Oops. Informe um email válido!'
+end
+
+Quando('eu submeto meu cadastro sem a senha') do                               
+  find("#fullName").set "Paulo"
+  find("#email").set Faker::Internet.free_email
+
+  click_button "Cadastrar"
+end                                                                            
+                                                                               
+Então('é exibida a mensagem: Oops. Informe sua senha secreta!') do             
+  alert_missing_password = find(".alert-dark")
+  expect(alert_missing_password.text).to eq 'Oops. Informe sua senha secreta!'
 end                                                                            
                                                                                

@@ -11,27 +11,28 @@ Funcionalidade: Cadastro
         Quando eu submeto meu cadastro completo
         Então sou redirecionado para o dashboard
 
-    @sem_nome
+    @tentativa_cadastro
     Cenario: submeter cadastro sem o nome
 
         Dado que eu acesso a página de cadastro
         Quando eu submeto meu cadastro sem o nome 
         Então é exibida a mensagem: Oops. Informe seu nome completo! 
 
-    @sem_email
+    @tentativa_cadastro
     Cenario: submeter cadastro sem o email
 
         Dado que eu acesso a página de cadastro
         Quando eu submeto meu cadastro sem o email
         Então é exibida a mensagem: Oops. Informe um email válido!
 
-    @email_inv
+    @tentativa_cadastro
     Cenario: submeter cadastro com email incorreto
 
         Dado que eu acesso a página de cadastro
         Quando eu submeto meu cadastro com email incorreto
         Então é exibida a mensagem: Oops. Informe um email válido!
 
+    @tentativa_cadastro
     Cenario: submeter cadastro sem senha
 
         Dado que eu acesso a página de cadastro
