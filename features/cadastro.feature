@@ -11,6 +11,7 @@ Funcionalidade: Cadastro
         Quando eu submeto meu cadastro completo
         Então sou redirecionado para o dashboard
 
+    @sem_nome
     Cenario: submeter cadastro sem o nome
 
         Dado que eu acesso a página de cadastro
