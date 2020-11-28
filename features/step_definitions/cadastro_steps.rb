@@ -29,10 +29,6 @@ Quando('eu submeto meu cadastro sem o nome') do
   click_button "Cadastrar"
 end
 
-Então('é exibida a mensagem: Oops. Informe seu nome completo!') do            
-  alert_missing_name = find(".alert-dark")
-  expect(alert_missing_name.text).to eq 'Oops. Informe seu nome completo!'
-end
 
 Quando('eu submeto meu cadastro sem o email') do                               
   find("#fullName").set "Paulo"
@@ -51,20 +47,15 @@ Quando('eu submeto meu cadastro com email incorreto') do
 
 end                                                                          
 
-Então('é exibida a mensagem: Oops. Informe um email válido!') do               
-  alert_missing_email = find(".alert-dark")
-  expect(alert_missing_email.text).to eq 'Oops. Informe um email válido!'
-end
 
 Quando('eu submeto meu cadastro sem a senha') do                               
   find("#fullName").set "Paulo"
   find("#email").set Faker::Internet.free_email
 
   click_button "Cadastrar"
-end                                                                            
-                                                                               
-Então('é exibida a mensagem: Oops. Informe sua senha secreta!') do             
-  alert_missing_password = find(".alert-dark")
-  expect(alert_missing_password.text).to eq 'Oops. Informe sua senha secreta!'
-end                                                                            
-                                                                               
+end
+
+Então('é exibida a mensagem: {string}') do |expected_alert|                           
+  alert = find('.alert-dark')
+  expect(alert.text).to eq expected_alert
+end                                                                           
