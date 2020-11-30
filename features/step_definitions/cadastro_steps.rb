@@ -19,10 +19,6 @@ Quando('eu submeto o seguinte formulário de cadastro') do |table|
 
 end                                                                          
     
-Então('sou redirecionado para o dashboard') do
-  Kernel.puts page
-  expect(page).to have_css ".dashboard"
-end
 
 
 Então('é exibida a mensagem: {string}') do |expected_alert|                           

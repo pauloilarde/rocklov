@@ -13,9 +13,9 @@ Funcionalidade: Cadastro
             | Paulo Ilarde | paulo@email.com | pwd123 |
         Então sou redirecionado para o dashboard
 
+    @tentativa_cadastro
     Esquema do Cenario: tentativa de cadastro
-
-        @tentativa_cadastro
+        
         Dado que eu acesso a página de cadastro
         Quando eu submeto o seguinte formulário de cadastro
             | nome         | email         | senha         |

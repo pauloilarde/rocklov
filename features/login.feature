@@ -5,11 +5,13 @@ Funcionalidade: Login
     Quero acessar o sistema RockLov
     Para anunciar meus equipamentos musicais para locação
 
+    @login_sucesso
     Cenário: Login com sucesso
 
         Dado que eu acesso a página principal
-        Quando submeto minhas credenciais válidas
-        Então sou redirecionado para o Dashboard
+        Quando submeto minhas credenciais "jon@email.com" e "pwd123"
+        Então sou redirecionado para o dashboard
+        
 
     Cenário: Senha incorreta
 
