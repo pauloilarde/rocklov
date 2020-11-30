@@ -8,7 +8,9 @@ Funcionalidade: Cadastro
     Cenario: fazer cadastro
 
         Dado que eu acesso a página de cadastro
-        Quando eu submeto meu cadastro completo
+        Quando eu submeto o seguinte formulário de cadastro
+            | nome         | email           | senha  |
+            | Paulo Ilarde | paulo@email.com | pwd123 |
         Então sou redirecionado para o dashboard
 
     @tentativa_cadastro
