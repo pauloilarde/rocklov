@@ -13,40 +13,20 @@ Funcionalidade: Cadastro
             | Paulo Ilarde | paulo@email.com | pwd123 |
         Então sou redirecionado para o dashboard
 
-    @tentativa_cadastro
-    Cenario: submeter cadastro sem o nome
+    Esquema do Cenario: tentativa de cadastro
 
+        @tentativa_cadastro
         Dado que eu acesso a página de cadastro
         Quando eu submeto o seguinte formulário de cadastro
-            | nome         | email           | senha  |
-            |              | paulo@email.com | pwd123 |
-        Então é exibida a mensagem: "Oops. Informe seu nome completo!"
+            | nome         | email         | senha         |
+            | <nome_input> | <email_input> | <senha_input> |
+        Então é exibida a mensagem: "<alerta_output>"
 
-    @tentativa_cadastro
-    Cenario: submeter cadastro sem o email
-
-        Dado que eu acesso a página de cadastro
-        Quando eu submeto o seguinte formulário de cadastro
-            | nome         | email           | senha  |
-            | Paulo Ilarde |                 | pwd123 |
-        Então é exibida a mensagem: "Oops. Informe um email válido!"
-
-    @tentativa_cadastro
-    Cenario: submeter cadastro com email incorreto
-
-        Dado que eu acesso a página de cadastro
-        Quando eu submeto o seguinte formulário de cadastro
-            | nome         | email           | senha  |
-            | Paulo Ilarde | paulo*email.com | pwd123 |
-        Então é exibida a mensagem: "Oops. Informe um email válido!"
-
-    @tentativa_cadastro
-    Cenario: submeter cadastro sem senha
-
-        Dado que eu acesso a página de cadastro
-        Quando eu submeto o seguinte formulário de cadastro
-            | nome         | email           | senha  |
-            | Paulo Ilarde | paulo@email.com |        |
-        Então é exibida a mensagem: "Oops. Informe sua senha secreta!"
-
+        Exemplos:
+            | nome_input | email_input     | senha_input | alerta_output                    |
+            |            | paulo@email.com | pwd123      | Oops. Informe seu nome completo! |
+            | Paulo      |                 | pwd123      | Oops. Informe um email válido!   |
+            | Paulo      | paulo*email.com | pwd123      | Oops. Informe um email válido!   |
+            | Paulo      | paulo&email.com | pwd123      | Oops. Informe um email válido!   |
+            | Paulo      | paulo@email.com |             | Oops. Informe sua senha secreta! |
 
