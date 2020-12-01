@@ -11,29 +11,19 @@ Funcionalidade: Login
         Dado que eu acesso a página principal
         Quando submeto minhas credenciais "jon@email.com" e "pwd123"
         Então sou redirecionado para o dashboard
-        
 
-    Cenário: Senha incorreta
-
-        Dado que eu acesso a página principal
-        Quando submeto minhas credenciais com senha incorreta
-        Então é exibida a mensagem de alerta: Usuário e/ou senha inválidos.
-
-    Cenário: Email não cadastrado
+    @tentativa_login
+    Esquema do Cenario: Tentar logar
 
         Dado que eu acesso a página principal
-        Quando submeto minhas credenciais com email inexistente na RockLov
-        Então é exibida a mensagem de alerta: Usuário e/ou senha inválidos.
+        Quando submeto minhas credenciais "<email_input>" e "<senha_input>"
+        Então é exibida a mensagem: "<alerta_output>"
 
+        Exemplos:
+            | email_input       | senha_input | alerta_output                    |
+            | paulo@exemplo.com | oi          | Usuário e/ou senha inválidos.    |
+            | paulo@mail.dev    | pwd123      | Usuário e/ou senha inválidos.    |
+            | paulo#mail.com    | pwd123      | Oops. Informe um email válido!   |
+            |                   | pwd123      | Oops. Informe um email válido!   |
+            | paulo@exemplo.com |             | Oops. Informe sua senha secreta! |
 
-    Cenário: Email incorreto
-
-        Dado que eu acesso a página principal
-        Quando submeto minhas credenciais
-        Então é exibida a mensagem de alerta: Oops. Informe um email válido!
-
-    Cenário: Email não informado
-
-        Dado que eu acesso a página principal
-        Quando submeto minhas credenciais sem preencher o campo email
-        Então é exibida a mensagem de alerta: Oops. Informe um email válido!

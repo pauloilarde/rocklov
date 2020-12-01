@@ -1,7 +1,7 @@
 
 
 Dado('que eu acesso a página de cadastro') do
-  visit "http://rocklov-web:3000/signup"
+  visit "/signup"
   
 end
 
@@ -21,7 +21,3 @@ end
     
 
 
-Então('é exibida a mensagem: {string}') do |expected_alert|                           
-  alert = find('.alert-dark')
-  expect(alert.text).to eq expected_alert
-end                                                                           
