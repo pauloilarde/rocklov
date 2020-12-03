@@ -2,7 +2,7 @@
 Funcionalidade: Cadastro
     Sendo eu um usuário que possui equipamentos musicais
     Quero fazer meu cadastro no RockLov
-    Para disponibilizar meus equipamentos para locação
+    Para acessar a plataforma e poder alugar e/ou disponibilizar instrumentos para locação
 
     @cadastro
     Cenario: fazer cadastro
