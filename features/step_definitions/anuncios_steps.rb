@@ -23,11 +23,13 @@ Quando("submeto o cadastro deste item") do
   find("#thumbnail input[type=file]", visible: false).set image
   find("input[placeholder$=equipamento]").set @anuncio[:nome]
   find("#category").find("option", text: @anuncio[:categoria]).select_option
-  # select "Cordas", :from => @anuncio[:categoria]
   find("#price").set @anuncio[:preco]
+  click_button "Cadastrar"
   sleep 3
 end
 
 Então("o produto deve ser exibido no dashboard") do
-  pending # Write code here that turns the phrase above into concrete actions
+  anuncios = find(".equipo-list")
+  expect(anuncios).to have_content @anuncio[:nome]
+  expect(anuncios).to have_content "R$#{@anuncio[:preco]}/dia"
 end
