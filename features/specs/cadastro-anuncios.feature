@@ -11,7 +11,7 @@ Funcionalidade: cadastro de anúncios
     @novo_equipo
     Cenario: novo equipo
 
-            E que acesso a página de cadastro de anuncios
+            Dado que acesso a página de cadastro de anuncios
             E que eu possuo o seguinte equipamento
             | thumb     | violao-nylon.jpg |
             | nome      | Violão Tagima    |
@@ -19,3 +19,15 @@ Funcionalidade: cadastro de anúncios
             | preco     | 90               |
         Quando submeto o cadastro deste item
         Então o produto deve ser exibido no dashboard
+
+    @sem_foto
+    Cenario: Anúncio sem foto
+
+        Dado que acesso a página de cadastro de anuncios
+            E que eu possuo o seguinte equipamento
+            | thumb     |                 |
+            | nome      | Violão Takamine |
+            | categoria | Cordas          |
+            | preco     | 95              |
+        Quando submeto o cadastro deste item
+        Então é exibida a mensagem: "Adicione uma foto no seu anúncio!"

@@ -4,5 +4,5 @@ end
 
 Então("é exibida a mensagem: {string}") do |expected_alert|
   alert = find(".alert-dark")
-  expect(@alert.dark).to eq expected_alert
+  expect(@alert.dark).to include expected_alert
 end
