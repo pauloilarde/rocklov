@@ -1,17 +1,16 @@
 Dado("que estou logado como {string} e {string}") do |email, password|
   @email = email
-  visit "/"
-  find("input[placeholder='Seu email']").set email
-  find("input[type='password']").set password
 
-  click_button "Entrar"
-  sleep 3
+  login_page = LoginPage.new
+  login_page.abrir_pagina
+  login_page.campo_email.set email
+  login_page.campo_senha.set senha
+  login_page.botao_entrar
 end
 
 Dado("que acesso a página de cadastro de anuncios") do
   click_button "Criar anúncio"
   expect(page).to have_css "#equipoForm"
-  sleep 2
 end
 
 Dado("que eu possuo o seguinte equipamento") do |table|
@@ -26,13 +25,10 @@ Quando("submeto o cadastro deste item") do
   find("#category").find("option", text: @anuncio[:categoria]).select_option
   find("#price").set @anuncio[:preco]
   click_button "Cadastrar"
-  sleep 3
 end
 
 Então("o produto deve ser exibido no dashboard") do
-  sleep 2
   anuncios = find(".equipo-list")
   expect(anuncios).to have_content @anuncio[:nome]
   expect(anuncios).to have_content "R$#{@anuncio[:preco]}/dia"
-  sleep 2
 end
