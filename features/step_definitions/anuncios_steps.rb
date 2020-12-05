@@ -1,4 +1,4 @@
-Dado("que estou logado como {string} e {string}") do |email, senha|
+Dado("Fiz login como {string} e {string}") do |email, senha|
   @email = email
 
   @login_page.open_page
@@ -6,8 +6,7 @@ Dado("que estou logado como {string} e {string}") do |email, senha|
 end
 
 Dado("que acesso a página de cadastro de anuncios") do
-  click_button "Criar anúncio"
-  expect(page).to have_css "#equipoForm"
+  @dash_page.goto_equipo_form
 end
 
 Dado("que eu possuo o seguinte equipamento") do |table|
@@ -16,16 +15,10 @@ Dado("que eu possuo o seguinte equipamento") do |table|
 end
 
 Quando("submeto o cadastro deste item") do
-  image = Dir.pwd + "/features/support/fixtures/img/" + @anuncio[:thumb]
-  find("#thumbnail input[type=file]", visible: false).set image
-  find("input[placeholder$=equipamento]").set @anuncio[:nome]
-  find("#category").find("option", text: @anuncio[:categoria]).select_option
-  find("#price").set @anuncio[:preco]
-  click_button "Cadastrar"
+  @equipos_page.create(@anuncio)
 end
 
 Então("o produto deve ser exibido no dashboard") do
-  anuncios = find(".equipo-list")
-  expect(anuncios).to have_content @anuncio[:nome]
-  expect(anuncios).to have_content "R$#{@anuncio[:preco]}/dia"
+  expect(@dash_page.equipo_list).to have_content @anuncio[:nome]
+  expect(@dash_page.equipo_list).to have_content "R$#{@anuncio[:preco]}/dia"
 end

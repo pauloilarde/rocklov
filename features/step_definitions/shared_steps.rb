@@ -1,6 +1,5 @@
 Então("sou redirecionado para o dashboard") do
-  Kernel.puts page
-  expect(page).to have_css ".dashboard"
+  expect(@dash_page.on_dash?).to be true
 end
 
 Então("é exibida a mensagem: {string}") do |expected_alert|

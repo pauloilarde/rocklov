@@ -5,9 +5,12 @@ Funcionalidade: cadastro de anúncios
     Quero cadastrar meus equipamentos
     Para disponibiliza-los para locação
 
+    Contexto: Login
+        * Fiz login como "neyma@psg.com" e "pwd123"
+
+    @novo_equipo
     Cenario: novo equipo
 
-        Dado que estou logado como "neyma@psg.com" e "pwd123"
             E que acesso a página de cadastro de anuncios
             E que eu possuo o seguinte equipamento
             | thumb     | violao-nylon.jpg |
