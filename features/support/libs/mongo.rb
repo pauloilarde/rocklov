@@ -1,5 +1,3 @@
-require "mongo"
-
 Mongo::Logger.logger = Logger.new("./logs/mongo.log")
 
 class MongoDB
