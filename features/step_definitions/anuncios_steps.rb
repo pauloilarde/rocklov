@@ -1,6 +1,7 @@
 Dado("que estou logado como {string} e {string}") do |email, password|
+  @email = email
   visit "/"
-  find("input[placeholder='Seu e-email']").set email
+  find("input[placeholder='Seu email']").set email
   find("input[type='password']").set password
 
   click_button "Entrar"
@@ -15,7 +16,7 @@ end
 
 Dado("que eu possuo o seguinte equipamento") do |table|
   @anuncio = table.rows_hash
-  Kernel.puts @anuncio
+  MongoDB.new.remove_equipo(@anuncio[:nome], @email)
 end
 
 Quando("submeto o cadastro deste item") do
@@ -29,7 +30,9 @@ Quando("submeto o cadastro deste item") do
 end
 
 Então("o produto deve ser exibido no dashboard") do
+  sleep 2
   anuncios = find(".equipo-list")
   expect(anuncios).to have_content @anuncio[:nome]
   expect(anuncios).to have_content "R$#{@anuncio[:preco]}/dia"
+  sleep 2
 end

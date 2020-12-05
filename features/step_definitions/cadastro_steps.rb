@@ -12,5 +12,4 @@ Quando("eu submeto o seguinte formulário de cadastro") do |table|
   find("#password").set user[:senha]
 
   click_button "Cadastrar"
-  sleep 2
 end
