@@ -1,11 +1,10 @@
-Dado("que estou logado como {string} e {string}") do |email, password|
+Dado("que estou logado como {string} e {string}") do |email, senha|
   @email = email
 
   login_page = LoginPage.new
-  login_page.abrir_pagina
-  login_page.campo_email.set email
-  login_page.campo_senha.set senha
-  login_page.botao_entrar
+
+  login_page.open_page
+  login_page.with(email, senha)
 end
 
 Dado("que acesso a página de cadastro de anuncios") do
