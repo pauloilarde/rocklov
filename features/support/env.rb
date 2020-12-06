@@ -6,18 +6,18 @@ require "mongo"
 
 CONFIG = YAML.load_file(File.join(Dir.pwd, "features/support/config/#{ENV["CONFIG"]}"))
 
-BROWSER = ENV["BROWSER"]
-
-if BROWSER == "firefox"
+case ENV["BROWSER"]
+when "firefox"
   @driver = :selenium
-elsif BROWSER == "fire_headless"
-    @driver = :selenium_headless
-elsif BROWSER == "chrome"
+when "fire_headless"
+  @driver = :selenium_headless
+when "chrome"
   @driver = :selenium_chrome
-else
+when "chrome_headless"
   @driver = :selenium_chrome_headless
-
-  
+else
+  log "Navegador incorreto :("
+end
 
 Capybara.configure do |config|
   config.default_driver = @driver
