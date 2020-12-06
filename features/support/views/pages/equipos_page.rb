@@ -6,9 +6,14 @@ class EquiposPage
     upload(equipo[:thumb]) if equipo[:thumb].length > 0
 
     find("input[placeholder$=equipamento]").set equipo[:nome]
-    find("#category").find("option", text: equipo[:categoria]).select_option
+    select_cat(equipo[:categoria]) if equipo[:categoria].length > 0
+
     find("#price").set equipo[:preco]
     click_button "Cadastrar"
+  end
+
+  def select_cat(cat)
+    find("#category").find("option", text: cat).select_option
   end
 
   def upload(file_name)
