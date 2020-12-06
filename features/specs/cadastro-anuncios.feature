@@ -20,7 +20,7 @@ Funcionalidade: cadastro de anúncios
         Quando submeto o cadastro deste item
         Então o produto deve ser exibido no dashboard
 
-    @tentativa_cadastro
+    @tentativa_cad
     Esquema do Cenario: Tentativa de cadastro de anúncios
 
         Dado que acesso a página de cadastro de anuncios
@@ -33,8 +33,10 @@ Funcionalidade: cadastro de anúncios
         Então é exibida a mensagem: "<saida>"
 
         Exemplos:
-            | foto        | nome           | categoria | preco | saida                             |
-            |             | Violão Gianini | Cordas    | 75    | Adicione uma foto no seu anúncio! |
-            | amp.jpg     |                | Outros    | 350   | Informe a descrição do anúncio!   |
-            | mic.jpg     | Microfone      |           | 220   | Informe a categoria               |
-            | violino.jpg | Violino        | Cordas    |       | Informe o valor da diária         |
+            | foto        | nome           | categoria | preco | saida                                |
+            |             | Violão Gianini | Cordas    | 75    | Adicione uma foto no seu anúncio!    |
+            | amp.jpg     |                | Outros    | 350   | Informe a descrição do anúncio!      |
+            | mic.jpg     | Microfone      |           | 220   | Informe a categoria                  |
+            | violino.jpg | Violino        | Cordas    |       | Informe o valor da diária            |
+            | violino.jpg | Violino        | Cordas    | aaa   | O valor da diária deve ser numérico! |
+            | violino.jpg | Violino        | Cordas    | 22a   | O valor da diária deve ser numérico! |
