@@ -1,0 +1,3 @@
+---
+url: http://rocklov-holog:3000
+mongo: mongodb://200.30.55.1:27017/rocklov
