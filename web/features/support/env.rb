@@ -16,7 +16,7 @@ when "chrome"
 when "chrome_headless"
   @driver = :selenium_chrome_headless
 else
-  log "Navegador incorreto :("
+  raise "Navegador incorreto :("
 end
 
 Capybara.configure do |config|
