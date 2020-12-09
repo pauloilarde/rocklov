@@ -1,6 +1,6 @@
-require "httparty"
+require_relative "base_api"
 
-class Signup
+class Signup < BaseApi
   include HTTParty
   base_uri "http://rocklov-api:3333"
 
